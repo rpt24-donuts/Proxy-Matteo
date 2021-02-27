@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const newrelic = require('newrelic');
 
 const app = express();
 const port = 3000;
@@ -36,7 +37,7 @@ app.get('/description', async (req, res)=>{
 });
 
 app.get('/reviews', async (req, res)=>{
-  axios.get('http://18.144.61.129:3001/bundle.js')
+  axios.get('http://localhost:3001/bundle.js')
   .then(bundle => {
     res.send(bundle.data);
   })
